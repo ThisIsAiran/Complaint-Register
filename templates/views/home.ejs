@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/styles.css">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .inputSearch{
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      min-width: 200px;
+      height: 60px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 10px;
+      z-index: +1;
+    }
+    .MobileLabel{
+      font-size: 20px;
+    }
+    .MobileNo{
+      width: 300px;
+      height: 45px;
+      border: 2px solid #202020;
+      border-right: 1px solid black;
+      padding: 1%;
+      outline:none;
+      box-shadow: 2px 2px 3px #202020;
+      font-size: 20px;
+    }
+    .submit{
+      width:40px;
+      height: 45px;
+      background: #202020;
+      border: 2px solid #202020;
+      border-left: none;
+      box-shadow: 2px 2px 3px #202020;
+      border-left: 1px solid black;
+      color: white;
+      font-size:23px;
+      text-shadow: 1px 1px 3px grey;
+      
+    }
+    .allNav{
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .navi{
+      width: 33%;
+      height: 300px;
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      margin-top: 170px;
+      float: left;
+      margin-right: 3px;
+      font-family: 'Josefin Slab', serif;
+    }
+    .stAd{
+      width: 90%;
+      min-width: 300px;
+      margin:10px auto;
+      display: flex;
+      color: white;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid white;
+      border-radius: 24px;
+      padding: 10px 10px;
+      font-size: 25px;
+      transition-duration: .5s;
+      cursor: pointer;
+      background: black;
+      box-shadow:1px 1px 5px 2px black;
+      text-decoration: none;
+    }
+    .stAd:hover{
+      text-decoration: none;
+      width: 50%;
+       min-width: 320px;
+      border-color:#4ECDC4;
+      color: #4ECDC4;
+    }
+    .sidesL{
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 33%;
+      height: 300px;
+      margin-top:170px;
+      background: White;
+      border-bottom-right-radius: 50%;
+      border-top-right-radius: 50%;
+      transform:translateX(-110%);
+      transition-duration: 1s;
+      border: 1px solid black;
+      box-shadow:1px 1px 5px 2px grey;
+
+    }
+    body:hover .sidesL{
+       transform:translateX(0%);
+       transition-duration: 1s;
+    }
+     .sidesR{
+       display:flex;
+      flex-direction: row;
+      justify-content: center;
+       align-items: center;
+      width: 33%;
+      height: 300px;
+       margin-top:170px;
+      background: White;
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+      transform:translateX(104%);
+      margin-left: 4px;
+      transition-duration: 1s;
+      border: 1px solid black;
+      box-shadow:1px 1px 5px 2px grey;
+      float:right;
+    }
+    body:hover .sidesR{
+       transform:translateX(0%);
+       transition-duration: 1s;
+    }
+     .caption{
+      width: 50%;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 35px;
+      font-family: 'Josefin Slab', serif;
+      color:black;
+      font-weight: 700;
+    }
+    @media only screen and (max-width: 1100px) {
+      .sidesR{
+       display:none;
+      }
+      .sidesL{
+        display: none;
+      }
+      .navi{
+        width: 100%;
+        margin-top: 140px;
+
+      }
+      .stAd{
+      width: 50%;
+      min-width: 250px;
+      margin:10px auto;
+      display: flex;
+      color: white;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid white;
+      border-radius: 24px;
+      padding: 10px 10px;
+      font-size: 25px;
+      transition-duration: .5s;
+      cursor: pointer;
+      background: black;
+      box-shadow:1px 1px 5px 2px black;
+      text-decoration: none;
+    }
+    .stAd:hover{
+      text-decoration: none;
+      width: 50%;
+       min-width: 280px;
+      border-color:#4ECDC4;
+      color: #4ECDC4;
+    }
+   
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('../partials/studentHeader') %>
+    <div class="allNav">
+    <div class="sidesL">
+    <div class="caption"> <p >Drop Your Complaints </p ></div>
+    <img class="image" src="./img/complaint.png" style="width: 170px; height: 170px; margin-left:6%;" >
+</div>
+    <div class="navi">
+<a class="stAd" href="/studentAccount">Student</a>
+<a class="stAd" href="/adminAccount">Warden</a>
+</div>
+<div class="sidesR">
+ <img class="image" src="./img/complain1.png" style="width: 180px; height: 165px; margin-left:-6%;" >
+  <div class="caption"> <p class="right" style=" margin-left: 10%;" >Resolve in a Week </p ></div>
+</div>
+</div>
+<script type="text/javascript">
+  const studentTab = document.querySelector(".studentTab")
+  const adminTab = document.querySelector(".adminTab")
+  studentTab.style.display = "none";
+  adminTab.style.display = "none";
+</script>
+</body>
+</html>

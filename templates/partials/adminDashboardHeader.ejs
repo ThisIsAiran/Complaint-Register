@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Dashboard Header</title>
+	<style type="text/css">
+		.dashboardHeader{
+			width: cover;
+			height: 100px;
+			background: black;
+			color: white;
+			display: flex;
+			flex-direction: row;
+		}
+		.logoutAddC{
+			float: right;
+			height: 100%;
+			width: 15%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-right: 5px;
+		}
+		.newb{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			background:white;
+			color: black;
+			cursor: pointer;
+			border: none;
+			padding:5px;
+			font-size: 15px;
+			margin: 3px;
+		}
+		.heading{
+			width: 85%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-size: 45px;
+		}
+		.username{
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="dashboardHeader">
+		<div class="heading"> 
+		 <a class="home" href="/">Complaint Register</a>
+		  <a class="home" href="/adminAccount">Admin Profile</a>
+		<a class="username"><%=adminRecivedComplaint.admin[2].username%></a>
+		</div>
+		<form  class="logoutAddC" action="/admin/logout/<%=adminRecivedComplaint.admin[1]%>" method = "POST">
+			<input class="newb" type="submit" name="submit" value="Logout">
+		</form>
+	</div>
+</body>
+</html>

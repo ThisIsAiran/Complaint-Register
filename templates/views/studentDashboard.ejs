@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+	body{
+		position: relative;
+	}
+		.dashboard{
+			width: 100%;
+			height: auto;
+			min-width: 120px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow-x: visible;
+		}
+		.listOfInput{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			height: auto;
+			font-family: 'Sniglet', cursive;
+			font-size: 15px;
+		}
+		.complaintsCaption{
+			width: 95%;
+			height: auto;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			border: .2px solid black;
+			margin:1% auto;
+			box-shadow: 1px 1px 6px 4px grey;
+			background: white;
+			
+		}
+		.complaints{
+			width:100%;
+			height: auto;
+			max-height:100px;
+			overflow-y: hidden;
+			word-wrap: break-word;
+			transition: .7s;
+			margin:0% auto;
+			padding-left: 5px;
+			padding-top: 0px;
+			transition: max-height .5s; 
+			color: black;
+		}
+		.captionArrow{
+			width: 100%;
+			height:auto;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+	.complaintsAdd{
+		transition: max-height 3s; 
+			max-height: 2000px;
+		}
+		.Arrow{
+			cursor: pointer;
+		}
+		.Rs{
+			height: auto;
+			display: flex;
+			flex-direction: row;
+			flex:2;
+			justify-content: ;
+			/*border-top: 1px solid black;*/
+			padding: 2px;
+		}
+		.Rs a {
+			width: auto;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			background-color:white;
+			color:#00bfff;
+			font-size: 15px;
+			border-radius: 50%;
+			padding:2px 2%;
+		/*	border:1px solid #00bfff;*/
+		}
+		.Rs a:hover{
+			text-decoration:none;
+			color: black;
+		}
+		.RsChild2{
+			width: 88%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			font-size: 15px;
+			padding-top: 4px;
+			color:#00bfff; 
+		}
+		.newComplaint{
+			width: 95%;
+			height: auto;
+			display: none;
+			flex-direction: row;
+			border: .2px solid black;
+			margin:1% auto;
+			box-shadow: 1px 1px 6px 4px grey;
+			background: white;
+			font-size: 15px;
+		}
+		textarea {
+		    width:92%;
+		    height: 80%;
+		    padding: 5px 5px;
+		    box-sizing: border-box;
+		    border:none;
+		    background-color: white;
+		    resize: none;
+		    font-size: 15px;
+		}
+		@media only screen and (max-width: 800px) {
+			.complaints{
+			padding-top: 2px;
+		}
+			.listOfInput{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			height: auto;
+			font-family: 'Sniglet', cursive;
+			font-size: 15px;
+		}
+     	.Rs{
+     		font-size: 15px;
+     	}
+}
+</style>
+</head>
+<body background="white">
+	<%- include('../partials/studentDashboardHeader') %>
+	<form class="newComplaint" action="/student/newComplaint/<%=studentComplaints.student[1]%>" method ="POST">
+                    <textarea name="complaint" required>
+                    </textarea>
+                	<input type="submit">
+    </form>
+	<div class="dashboard">
+		<div class="listOfInput">
+			 <% for(var i=0; i<studentComplaints.student[0].complaints.length; i++) {%>
+				<div class="complaintsCaption">
+					<div class="complaints">
+						<p><span>Complaint : </span><%=  studentComplaints.student[0].complaints[i].complaint %></p>
+						<p><span>Warden Text: </span> <%=  studentComplaints.student[0].complaints[i].answer %></p>
+					</div>
+					<div class="captionArrow">
+						<i class="fa fa-angle-down Arrow" style="font-size:15px;color:black" text-shadow: 1px 1px 3px grey;></i>
+	            	</div>
+	            	<div class="Rs">
+	            	<a href="/student/complaints/<%=studentComplaints.student[1]%>/<%=i%>"><i class="fa fa-trash-o" style="font-size:15px"></i></a>
+					<div class="RsChild2">Status : <%= studentComplaints.student[0].complaints[i].status %></div>
+					</div>
+				</div>
+			 <% } %>
+			</div>	 
+	</div>
+	<script type="text/javascript">
+		//for header
+		const studentTab = document.querySelector(".studentTab")
+		const adminTab = document.querySelector(".adminTab")
+
+
+
+
+		const ArrowArray = document.querySelectorAll(".Arrow")
+		const ComplaintsBox = document.querySelectorAll(".complaints")
+		ArrowArray.forEach((Arrow)=>{
+		Arrow.addEventListener("click",()=>{
+				 Arrow.parentNode.parentNode.children[0].classList.toggle("complaintsAdd");
+				 Arrow.classList.toggle("fa-angle-up");
+				 Arrow.classList.toggle("fa-angle-down");
+			});
+		})
+
+		const newComplaint = document.querySelector(".newComplaint")
+		const newComplainttab = document.querySelector(".newComplainttab")
+		const submitButton = document.querySelector(".Submit")
+		console.log(newComplaint)
+
+		newComplainttab.addEventListener("click", function(){
+			console.log("sfsfsdf")
+			newComplaint.style.display = "flex"
+		})
+
+		submitButton.addEventListener("click", function(){
+			newComplaint.style.display = "none"
+		})
+
+
+	</script>
+</body>
+</html>

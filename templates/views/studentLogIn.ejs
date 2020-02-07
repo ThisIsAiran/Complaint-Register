@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<%- include('../partials/studentHeader') %>
+<div class="login">
+	<form class="nav" action="/student/logIn" method = "POST" id="">
+		<h1 class="heading">Student LogIn</h1>
+		<input type="text" name="email" class="stAd" placeholder="email" required>
+		<input type="password" name="password" class="stAd" placeholder="password" required>
+		<input type="submit" value="Sign In" class="submit">
+	</form>
+</div>
+<script type="text/javascript">
+  const studentTab = document.querySelector(".studentTab")
+  const adminTab = document.querySelector(".adminTab")
+  const studentDashboardTab = document.querySelector(".studentDashboardTab")
+  const adminDashboardTab = document.querySelector(".adminDashboardTab")
+  // studentTab.style.display = "none";
+  adminTab.style.display = "none";
+
+</script>
+</body>
+</html>
