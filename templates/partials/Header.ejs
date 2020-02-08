@@ -6,9 +6,10 @@
       height: 100px;
       background: black;
       color: white;
-    }
-    a{
-      cursor:pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 20px;
     }
     .dashboardTab{
       width: cover;
@@ -49,19 +50,41 @@
     .username{
       margin:auto;
     }
+    a{
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      cursor:pointer;
+    } 
+    a:hover{
+      color: #4ECDC4;
+    }
+    .studentTab
+    {
+      margin-left: 5px;
+    } 
+    .adminTab{
+      margin-left: 5px;
+    }
+    .home{
+     text-decoration: none;
+      color: white;
+      font-size: 20px;
+      cursor:pointer;
+    }
   </style>
 </head>
 <body>
   <div class="header">
-      <a class="home" href="/">Complaint Register</a>
+      <a class="home" href="/">CR</a>
       <div class="studentTab">
-          <a class="studentSignUpTab" href="/student/SignUp">student SignUp</a>
-          <a class="studentLogInTab" href="/student/LogIn">student LogIn</a>
+          <a class="studentSignUpTab" href="/student/SignUp">SignUp</a>
+          <a class="studentLogInTab" href="/student/LogIn">LogIn</a>
       </div>
 
       <div class="adminTab">
-          <a class="adminSignUpTab" href="/admin/signUp">admin SignUp</a>
-          <a class="adminLogInTab" href="/admin/logIn">admin LogIn</a>
+          <a class="adminSignUpTab" href="/admin/signUp">SignUp</a>
+          <a class="adminLogInTab" href="/admin/logIn">LogIn</a>
       </div>
   </div>
 </body>

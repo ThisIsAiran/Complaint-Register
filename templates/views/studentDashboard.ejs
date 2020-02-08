@@ -103,7 +103,6 @@
 			height: auto;
 			display: none;
 			flex-direction: row;
-			border: .2px solid black;
 			margin:1% auto;
 			box-shadow: 1px 1px 6px 4px grey;
 			background: white;
@@ -119,6 +118,17 @@
 		    resize: none;
 		    font-size: 15px;
 		}
+		.submit{
+			width: 8%;
+     		background: white;
+     		border:none;
+     		border-left: 1px solid black;
+     		cursor:pointer;
+     		font-size: 18px;
+     	}
+     	.submit:hover{
+     		color: #4ECDC4;
+     	}
 		@media only screen and (max-width: 800px) {
 			.complaints{
 			padding-top: 2px;
@@ -143,7 +153,7 @@
 	<form class="newComplaint" action="/student/newComplaint/<%=studentComplaints.student[1]%>" method ="POST">
                     <textarea name="complaint" required>
                     </textarea>
-                	<input type="submit">
+                	<input class="submit" type="submit">
     </form>
 	<div class="dashboard">
 		<div class="listOfInput">
@@ -165,13 +175,6 @@
 			</div>	 
 	</div>
 	<script type="text/javascript">
-		//for header
-		const studentTab = document.querySelector(".studentTab")
-		const adminTab = document.querySelector(".adminTab")
-
-
-
-
 		const ArrowArray = document.querySelectorAll(".Arrow")
 		const ComplaintsBox = document.querySelectorAll(".complaints")
 		ArrowArray.forEach((Arrow)=>{
