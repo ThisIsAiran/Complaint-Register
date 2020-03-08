@@ -7,7 +7,7 @@ const auth = require('../middleware/adminAuth')
 const router = new express.Router()
 const urlencodedParser = bodyParser.urlencoded({extended: false})
 
-// get request for admin login and register
+//get request for admin login and register
 router.get('/adminAccount',(req, res)=>{
 	res.render('adminAccount')
 })
@@ -27,7 +27,7 @@ router.post('/admin/signUp', urlencodedParser, async (req, res)=>{
 	try{
 		await adminData.save()
 		const token  = await adminData.generateAuthToken()
-		res.redirect('admin/dashboard/'+token)
+		res.redirect('/admin/dashboard/'+token)
 	}
 	catch(e)
 	{
@@ -51,11 +51,15 @@ router.post('/admin/logIn',urlencodedParser, async(req, res)=>{
 router.get('/admin/dashboard/:token', urlencodedParser, auth, async(req, res)=>{
 
 	const studentData = await studentSignUp.find({adminId:req.adminData._id})
-			console.log(studentData[0].complaints)
-			let adminRecivedComplaint = {
-					admin:[studentData,req.params.token,req.adminData]
+	if(studentData)
+	{
+		let adminRecivedComplaint = {
+				admin:[studentData,req.params.token,req.adminData]
 			}
-			res.render('adminDashboard',{ adminRecivedComplaint:adminRecivedComplaint })
+		res.render('adminDashboard',{ adminRecivedComplaint:adminRecivedComplaint })	
+	}
+	else 
+		res.render('adminDashboard',{ adminRecivedComplaint:undefined})
 })
 
 //post request sending response to student by admin

@@ -13,7 +13,7 @@ const auth = async (req, res, next)=>{
 		next()
 	}
 	catch(e){
-		res.status(401).send("Please Authenticate")
+		res.redirect('/adminAccount')
 	}
 }
 module.exports = auth

@@ -21,8 +21,9 @@ router.get('/student/logIn',(req, res)=>{
 
 //post request for signUp and redirect to the student dashboard
 router.post('/student/signUp', urlencodedParser, async (req, res)=>{
-	console.log(req.body)
+	// console.log(req.body)
 	const studentData = new studentSignUp(req.body)
+	console.log(studentData)
 	try{
 		const adminData = await adminSignUp.findOne({hostel:studentData.hostel})
 		studentData.adminId = adminData._id
@@ -32,7 +33,7 @@ router.post('/student/signUp', urlencodedParser, async (req, res)=>{
 	}
 	catch(e)
 	{
-		res.status(400).send(e)
+		res.status(400).send(e);
 	}
 })
 

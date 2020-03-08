@@ -9,6 +9,7 @@
 			color: white;
 			display: flex;
 			flex-direction: row;
+			padding-left: 10px;
 		}
 		.logoutAddC{
 			float: right;
@@ -31,8 +32,11 @@
 			font-size: 15px;
 			margin: 3px;
 		}
+		.newb:hover{
+			color:#4ECDC4;
+		}
 		.heading{
-			width: 85%;
+			width: 70%;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -41,13 +45,28 @@
 		.username{
 			margin:auto;
 		}
+		.home{
+			width: 5%;
+			text-decoration: none;
+			color: white;
+			margin:auto;
+		}
+		.studentProfile{
+			width: 10%;
+			text-decoration: none;
+			color: white;
+			margin:auto;
+		}
+		a:hover{
+			color: #4ECDC4;
+		}
 	</style>
 </head>
 <body>
 	<div class="dashboardHeader">
+		<a class="home" href="/">CR</a>
+		<a class="studentProfile" href="/adminAccount">Profile</a>
 		<div class="heading"> 
-		 <a class="home" href="/">Complaint Register</a>
-		  <a class="home" href="/adminAccount">Admin Profile</a>
 		<a class="username"><%=adminRecivedComplaint.admin[2].username%></a>
 		</div>
 		<form  class="logoutAddC" action="/admin/logout/<%=adminRecivedComplaint.admin[1]%>" method = "POST">

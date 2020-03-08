@@ -37,9 +37,10 @@
             margin: 1% auto;
             background: white;
             transition-duration: .5s;
+            padding: 10px;
         }
         .complaintsCaption:hover{
-            box-shadow: 3px 3px 10px 3px grey;
+            box-shadow: 1px 1px 4px 1px grey;
         }
         .complaints{
             width:100%;
@@ -54,7 +55,7 @@
             transition: max-height .5s; 
             overflow:hidden;
             color: black;
-            font-size: 15px;
+            font-size: 22px;
         }
         .captionArrow{
             width: 100%;
@@ -84,7 +85,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            font-size:15px;
+            font-size:22px;
         }
         .statusButton{
             width: 33%;
@@ -92,9 +93,6 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            padding: 4px 1px;
-            margin: 3px;
-            margin-top: 20px;
         }
         .statusButton:hover{
            color: grey;
@@ -107,7 +105,7 @@
             border-bottom:1px solid  grey;
         }
         .radio{
-            margin-top: 2%;
+            margin-top: 5.5%;
             margin-left: 4%;
             width: 18px;
             height: 18px;
@@ -133,7 +131,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            font-size: 15px;
+            font-size: 22px;
         }
         .first{
             width: 100%;
@@ -161,38 +159,48 @@
         <%- include('../partials/adminDashboardHeader') %>
     <div class="dashboard">
         <div class="listOfInput">
-            <% for(var i=0; i< adminRecivedComplaint.admin[0].length; i++) { %>
-            <% for(var j=0; j< adminRecivedComplaint.admin[0][i].complaints.length; j++) { %>
-                <div class="complaintsCaption">
-                    <div class="complaints">
-                        <span style="color:#4ECDC4 ;">Complaint - </span><%=adminRecivedComplaint.admin[0][i].complaints[j].complaint%>
-                    </div>
-                    <div class="captionArrow">
-                        <i class="fa fa-angle-down Arrow" style="color:black" text-shadow: 1px 1px 3px grey;></i>
-                    </div>
-                    <form class="Rs" action="/admin/dashboard/<%=adminRecivedComplaint.admin[0][i]._id%>/<%=j%>/<%=adminRecivedComplaint.admin[1]%>" method = "POST">
-                        <div class="Status first">
-                            <input class="InformText" type="text" name="answer" placeholder="Inform the student by write up">
+           <% if(adminRecivedComplaint) { %>
+                <% for(var i=0; i< adminRecivedComplaint.admin[0].length; i++) { %>
+                <% for(var j=0; j< adminRecivedComplaint.admin[0][i].complaints.length; j++) { %>
+                    <div class="complaintsCaption">
+                        <div class="complaints">
+                            <span style="color:#4ECDC4 ;">Complaint - </span><%=adminRecivedComplaint.admin[0][i].complaints[j].complaint%>
                         </div>
-                        <div class="Status">
-                            <div class="statusButton" >
-                                <label>Seen</label> <input type="radio"  name="radio" class="radio" value="Seen">
-                            </div>
-                            <div class="statusButton" >
-                                <label>Pending</label> <input type="radio" name="radio" class="radio" value="Pending">
-                            </div>
-                            <div class="statusButton" class="radio">
-                               <label>Solved</label> <input type="radio" name="radio" class="radio" value="Solved">
-                            </div>
-                            <input  class="statusButton" type="submit" >
+                        <div class="captionArrow">
+                            <i class="fa fa-angle-down Arrow" style="color:black" text-shadow: 1px 1px 3px grey;></i>
                         </div>
-                    </form>
-                </div> 
-            <% } %>
-            <% } %>
+                        <form class="Rs" action="/admin/dashboard/<%=adminRecivedComplaint.admin[0][i]._id%>/<%=j%>/<%=adminRecivedComplaint.admin[1]%>" method = "POST">
+                            <div class="Status first">
+                                <input class="InformText" type="text" name="answer" placeholder="Inform the student by write up">
+                            </div>
+                            <div class="Status">
+                                <div class="statusButton" >
+                                    <label>Seen</label> <input type="radio"  name="radio" class="radio" value="Seen">
+                                </div>
+                                <div class="statusButton" >
+                                    <label>Pending</label> <input type="radio" name="radio" class="radio" value="Pending">
+                                </div>
+                                <div class="statusButton" class="radio">
+                                   <label>Solved</label> <input type="radio" name="radio" class="radio" value="Solved">
+                                </div>
+                                <input  class="statusButton submit" type="submit" >
+                            </div>
+                        </form>
+                    </div> 
+                <% } %>
+                <% } %>
+                <% } %>
         </div>   
     </div>
-<script type="text/javascript">       
+<script type="text/javascript">    
+const submit = document.querySelectorAll('.submit');
+var submitArray = Array.from(submit);
+submitArray.forEach(function(x){
+    x.addEventListener('click', function () {
+           this.parentNode.style.display = 'none';
+        });
+})
+
 </script>
 </body>
 </html>

@@ -109,7 +109,7 @@ studentSignUpSchema.statics.findByCredentials = async (email, password)=>{
 	const isMatch = await bcrypt.compare(password, studentData.password)
 	if(!isMatch)
 	{
-		throw new Error("Unable to login")
+		throw new Error("Unable to login your password is incorrect")
 	}
 	return studentData
 }
