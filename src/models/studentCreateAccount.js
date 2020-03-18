@@ -95,7 +95,7 @@ const studentSignUpSchema = new mongoose.Schema({
 studentSignUpSchema.methods.generateAuthToken = async function(){
 	const studentData = this
 	// console.log(studentData)
-	const token = jwt.sign({_id:studentData._id.toString()}, "thisisnodecourse")
+	const token = jwt.sign({_id:studentData. _id.toString()}, "thisisnodecourse")
 	studentData.tokens = studentData.tokens.concat({token})
 	await studentData.save()
 	return token

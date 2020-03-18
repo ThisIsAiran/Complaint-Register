@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const connectionUrl = 'mongodb://127.0.0.1:27017/Complaint-Register'
+const connectionUrl = 'mongodb+srv://guptaaman70659:bitti0788@complaintregister-gtmwd.mongodb.net/test?retryWrites=true&w=majority'
 mongoose.connect(connectionUrl,{
 	useNewUrlParser:true,
 	useCreateIndex:true,
