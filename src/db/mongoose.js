@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const connectionUrl = MONGODB_URI || 'mongodb://127.0.0.1:27017/Complaint-Register'
+const connectionUrl = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Complaint-Register'
 mongoose.connect(connectionUrl,{
 	useNewUrlParser:true,
 	useCreateIndex:true,
