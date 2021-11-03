@@ -21,7 +21,7 @@
     "mongoose": "^5.8.6",
     "request": "^2.88.0",
     "validate-phone-number-node-js": "0.0.1",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
